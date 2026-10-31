@@ -1,0 +1,12 @@
+.env
+*.pyc
+__pycache__/
+*.mp4
+*.webm
+.DS_Store
+
+.venv/
+.env.*
+!.env.example
+.pytest_cache/
+*.log

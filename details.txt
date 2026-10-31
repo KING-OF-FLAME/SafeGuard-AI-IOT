@@ -1,0 +1,8 @@
+SafeGuard AI development notes
+------------------------------
+Two devices communicate over the same local Wi-Fi through a Python laptop backend.
+DEVKIT: check serial monitor for address; exposes /status and POST /vision.
+ESP32-CAM: check serial monitor for address; exposes /capture, /status, /flash, and port 81 /stream.
+Configure a fresh Telegram bot token, API key, numeric authorized user IDs, and Wi-Fi password locally.
+DO NOT put credentials in a shared ZIP.
+For full setup instructions read README.md.
