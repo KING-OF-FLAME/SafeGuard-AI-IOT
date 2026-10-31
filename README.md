@@ -71,6 +71,15 @@ flowchart LR
   <img src="docs/images/oled.jpg" alt="Supplied photograph of the working SafeGuard OLED" width="48%">
 </p>
 
+## 📸 More project media
+
+<p align="center">
+  <img src="docs/images/camera-node.png" alt="Separate ESP32-CAM, laptop and Telegram architecture" width="48%">
+  <img src="docs/images/workflow.png" alt="Observation and supervisor-response workflow" width="48%">
+</p>
+
+**[View the full media gallery →](docs/MEDIA.md)** — hardware references, camera connections, workflow, circuit illustrations and the separate Traffic Simulation screenshot, with original-image source records.
+
 ## 🔌 Hardware & wiring
 
 **You need:** ESP32 DevKit V1, AI Thinker ESP32-CAM, HC-SR04, SH1106 OLED, buzzer module, 1 kΩ + 2 kΩ resistors, stable power, and a laptop on the same 2.4 GHz Wi-Fi.
@@ -262,6 +271,7 @@ python -m unittest discover -s tests -v
 
 ## 📚 Documentation
 
+- [Full project media gallery](docs/MEDIA.md)
 - [Complete physical wiring & camera programming](docs/WIRING.md)
 - [Detailed setup, commands & troubleshooting](docs/TECHNICAL_GUIDE.md)
 - [Validation status](VALIDATION_REPORT.md)
@@ -280,6 +290,10 @@ Diagrams and prototype photos above come from the supplied project report. The o
 ## 🚥 Separate project: Traffic Simulation By Yash Raj Group
 
 > **An independent Arduino Uno traffic-light project on Tinkercad. It is not part of SafeGuard AI, its wiring, firmware, or validation.**
+
+<a href="https://www.tinkercad.com/things/6tYz1gtD3ZU-traffic-simulation-by-yash-raj-group"><img src="docs/images/traffic-simulation.jpg" alt="Separate Tinkercad project: Traffic Simulation By Yash Raj Group, with Arduino Uno and traffic-light LEDs" width="100%"></a>
+
+*Original screenshot extracted from Appendix A of the corrected PDF.*
 
 - **Platform:** Autodesk Tinkercad Circuits.
 - **Circuit:** Arduino Uno, breadboard, red/yellow/green LEDs and resistors.

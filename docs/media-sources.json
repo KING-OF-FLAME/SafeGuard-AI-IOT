@@ -1,0 +1,103 @@
+{
+  "description": "Original embedded project media, preserved without re-encoding. Institutional logos, PDF transparency masks and redundant copies are omitted.",
+  "images": [
+    {
+      "file": "images/components.png",
+      "source_document": "SafeGuard_AI_Robotics_Report_Final.docx",
+      "embedded_path": "word/media/image3.png",
+      "width": 2200,
+      "height": 1230,
+      "sha256": "02c6cfe8e3ccdbf97a8292111e0d8372026edf30168633d733d032802bd5bd55"
+    },
+    {
+      "file": "images/wiring.png",
+      "source_document": "SafeGuard_AI_Robotics_Report_Final.docx",
+      "embedded_path": "word/media/image4.png",
+      "width": 2200,
+      "height": 1230,
+      "sha256": "ea0a05394a1b1a7bcf73686de1a28786a6a6382607023db3120bd095cda05b03"
+    },
+    {
+      "file": "images/echo-divider.png",
+      "source_document": "SafeGuard_AI_Robotics_Report_Final.docx",
+      "embedded_path": "word/media/image5.png",
+      "width": 2200,
+      "height": 1230,
+      "sha256": "d2253d1756c6dac1ceb62f504e1110bac7eb48a9c113bec3b1e01c331b26b28a"
+    },
+    {
+      "file": "images/camera-node.png",
+      "source_document": "SafeGuard_AI_Robotics_Report_Final.docx",
+      "embedded_path": "word/media/image6.png",
+      "width": 2200,
+      "height": 1230,
+      "sha256": "9f47ecc298512b9a1b5bfd061e29e763993b314d34f30e0a1e9969f3ea3254d9"
+    },
+    {
+      "file": "images/wokwi-circuit.png",
+      "source_document": "SafeGuard_AI_Robotics_Report_Final.docx",
+      "embedded_path": "word/media/image7.png",
+      "width": 2200,
+      "height": 1230,
+      "sha256": "a1c7e01ad901a614a7f60b386b58520343b80badfe59b30ee162fd5886f5e369"
+    },
+    {
+      "file": "images/architecture.png",
+      "source_document": "SafeGuard_AI_Robotics_Report_Final.docx",
+      "embedded_path": "word/media/image8.png",
+      "width": 2226,
+      "height": 1297,
+      "sha256": "59d5a11273afa4ba16c3d9d014b4cdb3138c98a9fc7ea6e1dcbfce28be0917eb"
+    },
+    {
+      "file": "images/workflow.png",
+      "source_document": "SafeGuard_AI_Robotics_Report_Final.docx",
+      "embedded_path": "word/media/image9.png",
+      "width": 1828,
+      "height": 1639,
+      "sha256": "839f0ca6b393d12960ea291947760df6060a0a91bffe18d158c252024030d565"
+    },
+    {
+      "file": "images/dashboard.png",
+      "source_document": "SafeGuard_AI_Robotics_Report_Final.docx",
+      "embedded_path": "word/media/image10.png",
+      "width": 1919,
+      "height": 1020,
+      "sha256": "60a4a941e35321e562d90dccc377f2b62771283985efe878bbda1fcda68a580f"
+    },
+    {
+      "file": "images/prototype.jpg",
+      "source_document": "SafeGuard_AI_Robotics_Report_Final.docx",
+      "embedded_path": "word/media/image15.jpg",
+      "width": 1152,
+      "height": 1536,
+      "sha256": "f71649f21491aeaa54ebfdbf33735c2352426330cfc554d7fac95618040995eb"
+    },
+    {
+      "file": "images/oled.jpg",
+      "source_document": "SafeGuard_AI_Robotics_Report_Final.docx",
+      "embedded_path": "word/media/image18.jpg",
+      "width": 600,
+      "height": 510,
+      "sha256": "d1b50c1d86c3eac11005410f96a751bc7eef67b4f22fe67df06af4cffea67982"
+    },
+    {
+      "file": "images/wokwi-qr.png",
+      "source_document": "SafeGuard_AI_Robotics_Report_Final.docx",
+      "embedded_path": "word/media/image19.png",
+      "width": 410,
+      "height": 410,
+      "sha256": "97ec55986ac61ea18d9e4aebfe172258c0d1a0420ee38c805a49b7ee9aac679c"
+    },
+    {
+      "file": "images/traffic-simulation.jpg",
+      "source_document": "SafeGuard_AI_Robotics_Report_Corrected_v2.pdf",
+      "page": 27,
+      "pdf_image_object": "1164 0",
+      "extracted_image_index": 24,
+      "width": 945,
+      "height": 642,
+      "sha256": "c3cd4d1aba40ade6706eab1d08e89db2a598399fc3da24957e923d1bff24de57"
+    }
+  ]
+}
