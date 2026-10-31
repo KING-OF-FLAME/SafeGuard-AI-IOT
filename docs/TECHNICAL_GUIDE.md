@@ -19,6 +19,8 @@ The old duplicated root-level `esp32_cam.ino` was intentionally removed: **open 
 
 ## 1. FIRST: Wiring and flashing
 
+See the [complete physical wiring guide](WIRING.md) for every power/signal/ground connection, the ECHO divider, buzzer compatibility and camera programming wiring.
+
 ### ESP32 DevKit
 
 - Board **ESP32 Dev Module**, Arduino-ESP32 **3.x**. Install Adafruit SH110X and Adafruit GFX libraries.

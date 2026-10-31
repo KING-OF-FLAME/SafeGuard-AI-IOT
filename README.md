@@ -15,7 +15,7 @@ Independent vision monitoring · Local proximity alarms · Supervisor alerts
 ![Prototype](https://img.shields.io/badge/Status-Educational_prototype-F59E0B?style=flat-square)
 [![Tests](https://github.com/KING-OF-FLAME/SafeGuard-AI-IOT/actions/workflows/tests.yml/badge.svg)](https://github.com/KING-OF-FLAME/SafeGuard-AI-IOT/actions/workflows/tests.yml)
 
-[Quick start](#-quick-start) · [Hardware](#-hardware--wiring) · [Simulation](https://wokwi.com/projects/479121451547351041) · [Technical guide](docs/TECHNICAL_GUIDE.md)
+[Quick start](#-quick-start) · [Hardware](#-hardware--wiring) · [SafeGuard distance demo](https://wokwi.com/projects/479121451547351041) · [Technical guide](docs/TECHNICAL_GUIDE.md)
 
 </div>
 
@@ -75,24 +75,57 @@ flowchart LR
 
 **You need:** ESP32 DevKit V1, AI Thinker ESP32-CAM, HC-SR04, SH1106 OLED, buzzer module, 1 kΩ + 2 kΩ resistors, stable power, and a laptop on the same 2.4 GHz Wi-Fi.
 
-| Component | ESP32 connection |
+### Complete controller connections
+
+| Module pin | Connect to |
 |---|---|
+| DevKit USB | Laptop / USB supply |
+| HC-SR04 VCC / GND | Verified DevKit 5 V rail / DevKit GND |
 | HC-SR04 TRIG | GPIO5 |
-| HC-SR04 ECHO | GPIO18 **through a voltage divider** |
-| SH1106 OLED | SDA GPIO21 · SCL GPIO22 · address `0x3C` |
-| Buzzer signal | GPIO25 |
-| ESP32-CAM | Separately powered 5 V node; communicates over Wi-Fi |
+| HC-SR04 ECHO | **1 kΩ resistor → junction J → GPIO18** |
+| Junction J | **2 kΩ resistor → DevKit GND** |
+| SH1106 VCC / GND | 3V3 / DevKit GND |
+| SH1106 SDA / SCL | GPIO21 / GPIO22; I2C address `0x3C` |
+| Compatible 3-pin buzzer S / I/O | GPIO25 |
+| Buzzer VCC / GND | 3V3 **if rated for it** / DevKit GND |
 
-<img src="docs/images/wiring.png" alt="Physical module wiring reference" width="100%">
+**All controller-side grounds join DevKit GND.** For a buzzer requiring a different supply or higher current, use a suitable driver; do not power its load from a GPIO.
 
-<details>
-<summary><b>Important: HC-SR04 ECHO voltage divider</b></summary>
+```mermaid
+flowchart LR
+    USB[USB power] --> ESP[ESP32 DevKit]
+    ESP -->|5 V rail| HV[HC-SR04 VCC]
+    G5[GPIO5] --> TRIG[HC-SR04 TRIG]
+    ECHO[HC-SR04 ECHO] --> R1[1 kΩ resistor]
+    R1 --> J[Junction J]
+    J --> G18[GPIO18]
+    J --> R2[2 kΩ resistor]
+    R2 --> GND[DevKit GND]
+    V3[DevKit 3V3] --> OV[SH1106 VCC]
+    V3 --> BV[Buzzer VCC: 3.3 V-rated module]
+    G21[GPIO21] --> SDA[OLED SDA]
+    G22[GPIO22] --> SCL[OLED SCL]
+    G25[GPIO25] --> BS[Buzzer signal input]
+    HG[HC-SR04 GND] --> GND
+    OG[OLED GND] --> GND
+    BG[Buzzer GND] --> GND
+```
 
-ESP32 GPIO is not 5 V tolerant. Place **1 kΩ between ECHO and GPIO18**, and **2 kΩ from GPIO18 to GND**. Use a common ground and verify wiring before power-up. Match the buzzer supply/driver to its module rating.
+The ECHO divider gives about **3.33 V from nominal 5 V**. ESP32 GPIO is not 5 V tolerant; check actual voltages and resistor tolerances, or use a suitable level shifter. A bare/high-current buzzer needs a driver. Match the module's rating and pin labels.
 
-<img src="docs/images/echo-divider.png" alt="ECHO divider: 1 kiloohm series resistor and 2 kiloohm resistor to ground" width="100%">
+### Separate ESP32-CAM connections
 
-</details>
+| Camera pin | Normal operation |
+|---|---|
+| 5V / GND | Stable regulated 5 V supply / that supply's GND |
+| Camera ribbon | Onboard camera socket |
+| GPIO4 flash LED | Already onboard; no external wire |
+| GPIO0 | Remove GPIO0-to-GND flashing jumper, then reset |
+| Data link | Same 2.4 GHz Wi-Fi as laptop and DevKit |
+
+**No direct GPIO connection between the DevKit and camera. Do not power the camera from DevKit 3V3.** For flashing only: adapter **TX → U0R (GPIO3)**, **RX → U0T (GPIO1)**, **GND → GND**, and temporarily **GPIO0 → GND**. UART logic must be **3.3 V**, even when camera power is 5 V. Use one suitable camera power source.
+
+**[Full wiring guide: power rails, divider, buzzer drivers, camera flashing and all onboard camera pins →](docs/WIRING.md)**
 
 ### Flash the boards
 
@@ -210,7 +243,7 @@ Wokwi demonstrates the **distance branch only** using an SSD1306 display and two
 ├── esp32_cam/                   # Camera firmware and dashboard header
 ├── assets/                      # Web dashboard interfaces
 ├── tests/                       # Offline backend and vision tests
-├── docs/                        # Reports, diagrams and detailed guide
+├── docs/                        # Wiring guide, diagrams and detailed setup
 ├── .env.example                 # Configuration template; no real credentials
 └── requirements*.txt            # Base and optional vision dependencies
 ```
@@ -229,10 +262,33 @@ python -m unittest discover -s tests -v
 
 ## 📚 Documentation
 
+- [Complete physical wiring & camera programming](docs/WIRING.md)
 - [Detailed setup, commands & troubleshooting](docs/TECHNICAL_GUIDE.md)
 - [Validation status](VALIDATION_REPORT.md)
 
 Diagrams and prototype photos above come from the supplied project report. The original PDF/Word reports are not published in this repository.
+
+## 🔗 SafeGuard AI repository QR
+
+<p align="center">
+  <a href="https://github.com/KING-OF-FLAME/SafeGuard-AI-IOT/"><img src="docs/images/repository-qr.png" alt="QR code for the SafeGuard AI GitHub repository" width="200"></a><br>
+  <a href="https://github.com/KING-OF-FLAME/SafeGuard-AI-IOT/"><b>Scan to open SafeGuard-AI-IOT on GitHub</b></a>
+</p>
+
+---
+
+## 🚥 Separate project: Traffic Simulation By Yash Raj Group
+
+> **An independent Arduino Uno traffic-light project on Tinkercad. It is not part of SafeGuard AI, its wiring, firmware, or validation.**
+
+- **Platform:** Autodesk Tinkercad Circuits.
+- **Circuit:** Arduino Uno, breadboard, red/yellow/green LEDs and resistors.
+- **Purpose:** demonstrate a traffic-light sequence as a separate robotics exercise.
+
+<p align="center">
+  <a href="https://www.tinkercad.com/things/6tYz1gtD3ZU-traffic-simulation-by-yash-raj-group"><img src="docs/images/traffic-project-qr.png" alt="QR code for the separate Tinkercad traffic simulation project" width="170"></a><br>
+  <a href="https://www.tinkercad.com/things/6tYz1gtD3ZU-traffic-simulation-by-yash-raj-group"><b>Open the separate Traffic Simulation project ↗</b></a>
+</p>
 
 ---
 
